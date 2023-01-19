@@ -1,0 +1,268 @@
+/* CSS Reset */
+/* 1. Use a more-intuitive box-sizing model.*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+    margin: 0;
+}
+
+/* 3. Allow percentage-based heights in the application */
+html,
+body {
+    height: 100%;
+}
+
+/* Typographic tweaks! 4. Add accessible line-height 5. Improve text rendering */
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 7. Remove built-in form typography styles */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 9. Create a root stacking context */
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/* Utility */
+.flex-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.justify {
+    justify-content: space-between;
+}
+
+.overlay {
+    position: absolute;
+    /* positions the element relative to its parent container */
+    z-index: 10;
+    /* sets the element to be on top of all other elements with a lower z-index */
+    opacity: 0.5;
+    visibility: visible;
+    /* change attribute to hidden to hide the overlay */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 1440px;
+    height: 900px;
+}
+
+.overlay img {
+    object-fit: none;
+}
+
+.attribution {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    bottom: 1%;
+    transform: translate(-50%, -50%);
+}
+
+/* Main */
+:root {
+    --clr-primary: hsl(215, 51%, 70%);
+    --clr-secondary: hsl(178, 100%, 50%);
+
+    --clr-main-bg: hsl(217, 54%, 11%);
+    --clr-card-bg: hsl(216, 50%, 16%);
+    --clr-line: hsl(215, 32%, 27%);
+    --clr-title: hsl(0, 0%, 100%);
+
+    --ff-base: 'Outfit', sans-serif;
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-bold: 600;
+}
+
+body {
+    font-family: var(--ff-base);
+    font-weight: var(--fw-regular);
+    font-size: 15px;
+    color: var(--clr-primary);
+    background-color: var(--clr-main-bg);
+
+    display: grid;
+    place-content: center;
+    padding: 1rem;
+}
+
+.nftcard {
+    min-width: 327px;
+    max-width: 350px;
+    min-height: 542px;
+    max-height: 596px;
+
+    border-radius: 1rem;
+    background-color: var(--clr-card-bg);
+
+    box-shadow: 0 40px 30px rgba(0, 0, 0, 0.25);
+}
+
+.nftcard__image {
+    padding: 25px;
+    position: relative;
+}
+
+.nftcard__image-overlay {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    height: calc(100%-50px);
+    width: calc(100%-50px);
+    opacity: 0;
+    transition: .5s ease;
+    background-color: var(--clr-secondary);
+    border-radius: 0.5rem;
+}
+
+.nftcard__image-overlay:is(:hover) {
+    opacity: 0.6;
+}
+
+.nftcard__image-overlay:is(:hover)::after {
+    content: "";
+    background-image: url("images/icon-view.svg");
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nftcard__image img {
+    border-radius: 0.5rem;
+}
+
+.nftcard__content {
+    padding: 0px 25px 25px 25px;
+    font-weight: var(--fw-regular);
+
+    display: grid;
+    gap: 15px;
+}
+
+.nftcard__title {
+    color: var(--clr-title);
+    font-weight: var(--fw-regular);
+}
+
+.nftcard__content p {
+    font-size: 16px;
+}
+
+.nftcard__price[data-icon="ethereum"]::before {
+    content: "";
+    background-image: url("images/icon-ethereum.svg");
+    background-repeat: no-repeat;
+    width: 11px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.nftcard__price {
+    color: var(--clr-secondary);
+    font-weight: var(--fw-bold);
+}
+
+.nftcard__timeleft[data-icon="clock"]::before {
+    content: "";
+    background-image: url("images/icon-clock.svg");
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.nftcard__author {
+    border-top: 1px solid var(--clr-line);
+    padding-top: 16px;
+}
+
+.author {
+    color: var(--clr-title);
+    margin-left: -10px;
+}
+
+.nftcard__title:is(:hover),
+.author:is(:hover) {
+    cursor: pointer;
+    color: var(--clr-secondary);
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid var(--clr-title);
+    border-radius: 50%;
+}
+
+@media (min-width: 385px) {
+
+    .nftcard__content {
+        font-size: 16px;
+        
+    }
+
+    .nftcard__title {
+        font-size: 21px;
+        letter-spacing: 0.75px;
+    }
+
+    .nftcard__content p {
+        font-size: 18px;
+    }
+
+    .nftcard__author {
+        margin-top: 10px;
+        padding-bottom: 20px;
+    }
+}
