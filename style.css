@@ -168,7 +168,7 @@ body {
 
 .nftcard__title {
     color: var(--clr-title);
-    font-weight: var(--fw-regular);
+    font-weight: var(--fw-bold);
 }
 
 .nftcard__content p {
