@@ -70,26 +70,6 @@ h6 {
     justify-content: space-between;
 }
 
-.overlay {
-    position: absolute;
-    /* positions the element relative to its parent container */
-    z-index: 10;
-    /* sets the element to be on top of all other elements with a lower z-index */
-    opacity: 0.5;
-    visibility: visible;
-    /* change attribute to hidden to hide the overlay */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 1440px;
-    height: 900px;
-}
-
-.overlay img {
-    object-fit: none;
-}
-
 .attribution {
     position: absolute;
     z-index: 10;
@@ -249,20 +229,23 @@ body {
 
     .nftcard__content {
         font-size: 16px;
-        
+        transition: ease all 0.1s;
     }
 
     .nftcard__title {
         font-size: 21px;
         letter-spacing: 0.75px;
+        transition: ease all 0.1s;
     }
 
     .nftcard__content p {
         font-size: 18px;
+        transition: ease all 0.1s;
     }
 
     .nftcard__author {
         margin-top: 10px;
         padding-bottom: 20px;
+        transition: ease all 0.1s;
     }
 }
